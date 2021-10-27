@@ -1,3 +1,3 @@
-function [return here] = log(filterbank)
+function [return here] = logFunc(filterbank)
 	
 end
