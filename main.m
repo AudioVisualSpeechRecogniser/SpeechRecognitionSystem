@@ -2,8 +2,10 @@
 
 magnitude = magPhase(sample);
 
-fbank = filterbank(magnitude);
+fbank = filterbank(magnitude, 8);
 
-logData = logFunc(fbank);
+writeFile(fbank);
 
-dctData = dct(logData);
+% logData = logFunc(fbank);
+
+% dctData = dct(logData);

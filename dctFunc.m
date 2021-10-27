@@ -1,4 +1,4 @@
-function [dctData] = dct(logData)
+function [dctData] = dctFunc(logData)
 	% As a rule truncate to keep half the number of dct coefficients	
     dctData = dct(logData);
 end
