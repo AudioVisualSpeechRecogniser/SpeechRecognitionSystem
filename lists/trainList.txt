@@ -1,0 +1,5 @@
+MFCCs/train/Take-1.mfc
+MFCCs/train/Take-2.mfc
+MFCCs/train/Take-3.mfc
+MFCCs/train/Take-4.mfc
+MFCCs/train/Take-5.mfc

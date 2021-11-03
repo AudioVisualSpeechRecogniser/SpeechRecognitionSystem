@@ -10,6 +10,13 @@ function [featureVector] = filterbank(magSpec, N)
         end
     end
     featureVector = log(featureVector); % Human hearing range
+    disp(featureVector)
+    if(isnan(featureVector) | isinf(featureVector))
+        for i=1:length(featureVector)
+            featureVector(i) = 0;
+        end
+    end
+    disp(featureVector);
     featureVector = dct(featureVector); % Quefrency range
     featureVector = featureVector(1:floor(N/2)); % Trim pitch
     

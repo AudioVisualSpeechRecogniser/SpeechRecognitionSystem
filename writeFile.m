@@ -1,5 +1,5 @@
-function [data] = writeFile(data)
-    filename = "ReversedSession2_16_2.mfc";
+function [data] = writeFile(data, fileOut)
+    filename = "MFCCs\train\" + fileOut + ".mfc";
     numVectors = length(data); % Number of feature vectors
     vectorPeriod = 100000;
     numDims = length(data(1,:));
