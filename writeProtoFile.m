@@ -13,7 +13,7 @@ function writeProtoFile(fileName, NumStates, VectorSize)
     fprintf(fid, '%s\n', '<BeginHMM>'); 
     fprintf(fid, '%s%d%s%d%s\n' , '<NumStates> ', HTKnumStates, ...
                  ' <VecSize> ', VectorSize, ...
-                 ' <USER> <nullD> <diagC>');
+                 ' <MFCC> <nullD> <diagC>');
     
     % State generation
     for i=2:HTKnumStates-1

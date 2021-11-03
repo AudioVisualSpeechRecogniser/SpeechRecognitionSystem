@@ -1,4 +1,4 @@
-filename = "Take-5_16";
+filename = "Take-20";
 
 [audioData, fs] = audioread("TrainingData\Training-Audio\" + filename + ".wav"); % Read the audio data fs:frequency sample
 
@@ -6,7 +6,7 @@ sampleRate = 320; % Number of data points per sample
 
 numberOfSamples = floor(length(audioData)/sampleRate); % Number of samples to take
 
-filterBankChannels = 14;
+filterBankChannels = 28;
 
 fbank = zeros(numberOfSamples, filterBankChannels/2); % Create a blank vector
 

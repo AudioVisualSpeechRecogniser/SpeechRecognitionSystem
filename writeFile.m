@@ -17,5 +17,7 @@ function [data] = writeFile(data, fileOut)
             fwrite(file, data(i, j), 'float32');
         end
     end
+    
+    disp("MFCC File written: " + fileOut);
 
 end

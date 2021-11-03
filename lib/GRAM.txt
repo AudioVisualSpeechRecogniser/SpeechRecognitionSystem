@@ -1,4 +1,4 @@
 $name = Albi | Alex | Alexander | Alejandro | Aurelie | Benjamin | Brennan | Felipe | Harry 
 | Hemal | Hugo | Max | Nathaniel | Owen | Ruby | Ruaridh | Rory | Sarah | Sophie | Vav | Yan;
 
-([sil] < $name > [sil])
+([sil] < $name [sil]>)
