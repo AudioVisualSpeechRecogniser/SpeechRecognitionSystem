@@ -1,0 +1,13 @@
+[sample, fs] = audioread("TrainingData\speech.wav");
+
+samplerate = 320;
+
+numOfSamples = length(sample/sampleRate);
+
+for i=1:numberOfSamples
+    magnitude = magPhase(sample[i*sampleRate:i+Samplera]);
+
+    fbank() = filterbank(magnitude, 8);
+end
+
+writeFile(fbank);

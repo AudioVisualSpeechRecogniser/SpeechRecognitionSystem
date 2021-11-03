@@ -1,0 +1,16 @@
+function [featureVector] = filterbank(magSpec, N)
+
+    channels = floor(linspace(1, length(magSpec), N+1));
+    featureVector = zeros(N, 1);
+    for j=1:length(channels)-1
+        if j ~= length(channels)
+            first = channels(j);
+            last = channels(j+1);
+            featureVector(j) = sum(magSpec(first:last));
+        end
+    end
+    featureVector = log(featureVector); % Human hea
+    featureVector = dct(featureVector);
+    featureVector = featureVector(1:floor(N/2));
+    
+end
