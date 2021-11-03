@@ -1,5 +1,5 @@
 function [data] = writeFile(data)
-    filename = "x.mfc";
+    filename = "x2.mfc";
     numVectors = length(data); % Number of feature vectors
     vectorPeriod = 100000;
     numDims = length(data(1,:));
@@ -11,8 +11,8 @@ function [data] = writeFile(data)
     fwrite(file, vectorPeriod, 'int32'); % sample period in 100ns units (4 byte int)
     fwrite(file, numDims * 4, 'int16'); % number of bytes per vector (2 byte int)
     fwrite(file, parmKind, 'int16'); % code for the sample kind (2 byte int)
-    % Write the data: one coefficient at a time:
-    for i = 1: numVectors
+
+    for i = 1: numVectors % Write the data to the .mfc file
         for j = 1:numDims
             fwrite(file, data(i, j), 'float32');
         end

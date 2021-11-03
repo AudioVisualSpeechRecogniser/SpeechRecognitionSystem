@@ -1,13 +1,17 @@
-[sample, fs] = audioread("TrainingData\speech.wav");
+[audioData, fs] = audioread("TrainingData\speech.wav"); % Read the audio data fs:frequency sample
 
-samplerate = 320;
+sampleRate = 320; % Number of data points per sample
 
-numOfSamples = length(sample/sampleRate);
+numberOfSamples = floor(length(audioData)/sampleRate); % Number of samples to take
 
-for i=1:numberOfSamples
-    magnitude = magPhase(sample[i*sampleRate:i+Samplera]);
+fbank = zeros(numberOfSamples, 4); % Create a blank vector
 
-    fbank() = filterbank(magnitude, 8);
+for i=1:numberOfSamples % Loop through e
+    magnitude = magPhase(audioData(i:sampleRate));
+
+    f = filterbank(magnitude, 8);
+    
+    fbank(i, :) = f;
 end
 
 writeFile(fbank);
