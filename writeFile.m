@@ -1,9 +1,9 @@
 function [data] = writeFile(data)
-    filename = "x2.mfc";
+    filename = "ReversedSession2_16_2.mfc";
     numVectors = length(data); % Number of feature vectors
     vectorPeriod = 100000;
     numDims = length(data(1,:));
-    parmKind = 6; % type of feature
+    parmKind = 6; % type of feature MFCC
 
     file = fopen(filename, 'w', 'ieee-be'); % Big-endian ordering
 
