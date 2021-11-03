@@ -1,8 +1,8 @@
 function [data] = writeFile(data)
     filename = "x.mfc";
-    numVectors = 4; % Number of feature vectors
-    vectorPeriod = 4;
-    numDims = 50;
+    numVectors = length(data); % Number of feature vectors
+    vectorPeriod = 100000;
+    numDims = length(data(1,:));
     parmKind = 6; % type of feature
 
     file = fopen(filename, 'w', 'ieee-be'); % Big-endian ordering

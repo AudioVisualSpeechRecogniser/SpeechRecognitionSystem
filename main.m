@@ -3,11 +3,15 @@
 sampleRate = 320;
 
 numberOfSamples = floor(length(sample)/sampleRate);
-fbank = zeros(numberOfSamples);
-for i=1:numberOfSamples
-    magnitude = magPhase(sample((i*sampleRate+1)-sampleRate:i*sampleRate));
 
-    fbank(i) = filterbank(magnitude, 8);
+fbank = zeros(numberOfSamples, 4);
+
+for i=1:numberOfSamples
+    magnitude = magPhase(sample(i:sampleRate));
+
+    f = filterbank(magnitude, 8);
+    
+    fbank(i, :) = f;
 end
 
 writeFile(fbank);
