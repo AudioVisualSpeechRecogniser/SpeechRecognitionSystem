@@ -1,21 +1,18 @@
-filename = "Take-20";
+for i=1:1
+    currentFile = "reversed-" + i;
+    numberOfChannels = 30;
 
-[audioData, fs] = audioread("TrainingData\Training-Audio\" + filename + ".wav"); % Read the audio data fs:frequency sample
+    input = "TrainingData\Training-Audio\" + currentFile + ".wav";
 
-sampleRate = 320; % Number of data points per sample
+    disp(input)
 
-numberOfSamples = floor(length(audioData)/sampleRate); % Number of samples to take
+    output = "MFCCs\train\" + currentFile + ".mfc";
 
-filterBankChannels = 28;
+    [sample,fs] = audioread(input);
 
-fbank = zeros(numberOfSamples, filterBankChannels/2); % Create a blank vector
+    %sample = specsub(sample,fs);
 
-for i=1:numberOfSamples % Loop through each sample
-    magnitude = magPhase(audioData((i*sampleRate) - (sampleRate -1):i*sampleRate)); % Get the magnitude data of each sample
-    
-    f = filterbank(magnitude, filterBankChannels); % Run magnitude data through an N channel filterbank to get N/2 data points
-    
-    fbank(i, :) = f; % Store the filtered data to the vector
+    magnitude = magSpec(sample, fs, output, numberOfChannels); % audio data, frequency, output filename, number of channels
+
+    writeToFile(magnitude, output)
 end
-
-writeFile(fbank, filename); % Write the data to a .mfc file

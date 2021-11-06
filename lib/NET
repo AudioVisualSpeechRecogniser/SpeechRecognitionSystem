@@ -1,0 +1,137 @@
+VERSION=1.0
+N=26   L=109  
+I=0    W=sil                 
+I=1    W=Yan                 
+I=2    W=!NULL               
+I=3    W=Vav                 
+I=4    W=Sophie              
+I=5    W=Sarah               
+I=6    W=Rory                
+I=7    W=Ruaridh             
+I=8    W=Ruby                
+I=9    W=Owen                
+I=10   W=Nathaniel           
+I=11   W=Max                 
+I=12   W=Hugo                
+I=13   W=Hemal               
+I=14   W=Harry               
+I=15   W=Felipe              
+I=16   W=Brennan             
+I=17   W=Benjamin            
+I=18   W=Aurelie             
+I=19   W=Alejandro           
+I=20   W=Alexander           
+I=21   W=Alex                
+I=22   W=Albi                
+I=23   W=sil                 
+I=24   W=!NULL               
+I=25   W=!NULL               
+J=0     S=2    E=0    
+J=1     S=0    E=1    
+J=2     S=2    E=1    
+J=3     S=23   E=1    
+J=4     S=25   E=1    
+J=5     S=1    E=2    
+J=6     S=3    E=2    
+J=7     S=4    E=2    
+J=8     S=5    E=2    
+J=9     S=6    E=2    
+J=10    S=7    E=2    
+J=11    S=8    E=2    
+J=12    S=9    E=2    
+J=13    S=10   E=2    
+J=14    S=11   E=2    
+J=15    S=12   E=2    
+J=16    S=13   E=2    
+J=17    S=14   E=2    
+J=18    S=15   E=2    
+J=19    S=16   E=2    
+J=20    S=17   E=2    
+J=21    S=18   E=2    
+J=22    S=19   E=2    
+J=23    S=20   E=2    
+J=24    S=21   E=2    
+J=25    S=22   E=2    
+J=26    S=0    E=3    
+J=27    S=2    E=3    
+J=28    S=23   E=3    
+J=29    S=25   E=3    
+J=30    S=0    E=4    
+J=31    S=2    E=4    
+J=32    S=23   E=4    
+J=33    S=25   E=4    
+J=34    S=0    E=5    
+J=35    S=2    E=5    
+J=36    S=23   E=5    
+J=37    S=25   E=5    
+J=38    S=0    E=6    
+J=39    S=2    E=6    
+J=40    S=23   E=6    
+J=41    S=25   E=6    
+J=42    S=0    E=7    
+J=43    S=2    E=7    
+J=44    S=23   E=7    
+J=45    S=25   E=7    
+J=46    S=0    E=8    
+J=47    S=2    E=8    
+J=48    S=23   E=8    
+J=49    S=25   E=8    
+J=50    S=0    E=9    
+J=51    S=2    E=9    
+J=52    S=23   E=9    
+J=53    S=25   E=9    
+J=54    S=0    E=10   
+J=55    S=2    E=10   
+J=56    S=23   E=10   
+J=57    S=25   E=10   
+J=58    S=0    E=11   
+J=59    S=2    E=11   
+J=60    S=23   E=11   
+J=61    S=25   E=11   
+J=62    S=0    E=12   
+J=63    S=2    E=12   
+J=64    S=23   E=12   
+J=65    S=25   E=12   
+J=66    S=0    E=13   
+J=67    S=2    E=13   
+J=68    S=23   E=13   
+J=69    S=25   E=13   
+J=70    S=0    E=14   
+J=71    S=2    E=14   
+J=72    S=23   E=14   
+J=73    S=25   E=14   
+J=74    S=0    E=15   
+J=75    S=2    E=15   
+J=76    S=23   E=15   
+J=77    S=25   E=15   
+J=78    S=0    E=16   
+J=79    S=2    E=16   
+J=80    S=23   E=16   
+J=81    S=25   E=16   
+J=82    S=0    E=17   
+J=83    S=2    E=17   
+J=84    S=23   E=17   
+J=85    S=25   E=17   
+J=86    S=0    E=18   
+J=87    S=2    E=18   
+J=88    S=23   E=18   
+J=89    S=25   E=18   
+J=90    S=0    E=19   
+J=91    S=2    E=19   
+J=92    S=23   E=19   
+J=93    S=25   E=19   
+J=94    S=0    E=20   
+J=95    S=2    E=20   
+J=96    S=23   E=20   
+J=97    S=25   E=20   
+J=98    S=0    E=21   
+J=99    S=2    E=21   
+J=100   S=23   E=21   
+J=101   S=25   E=21   
+J=102   S=0    E=22   
+J=103   S=2    E=22   
+J=104   S=23   E=22   
+J=105   S=25   E=22   
+J=106   S=25   E=23   
+J=107   S=0    E=24   
+J=108   S=2    E=24   

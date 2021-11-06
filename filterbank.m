@@ -1,21 +1,28 @@
-function [featureVector] = filterbank(magSpec, N)
+function [ coefficients ] = melScaleFilterbank( mag, numChannels )
 
-    channels = floor(linspace(1, length(magSpec), N+1)); % Set the number of channels for N
-    featureVector = zeros(N, 1); % Create a blank vector
-    for i=1:length(channels)-1 % Loop through the channels
-        if i ~= length(channels)
-            first = channels(i); % Get each channel space first and last
-            last = channels(i+1);
-            featureVector(i) = sum(magSpec(first:last)); % Sum values and store in vector
-        end
+%initialise array of size channels
+coefficients = zeros(numChannels,1);
+
+%width of melbank filter rectangular frame
+frameSizeFreq =round( length(mag)/numChannels);
+channelIndex = 1;
+%Outer loop (between frames)
+for i=1 : numChannels
+    
+    sum = 0.0;
+    
+    %Inner loop (averages magnitudes within the frames)
+    for j=1 : frameSizeFreq
+           
+           sum = sum + mag((i-1)*frameSizeFreq + j); 
+        
     end
-    featureVector = log(featureVector); % Human hearing range
-    if(isnan(featureVector) | isinf(featureVector))
-        for i=1:length(featureVector)
-            featureVector(i) = 0;
-        end
-    end
-    featureVector = dct(featureVector); % Quefrency range
-    featureVector = featureVector(1:floor(N/2)); % Trim pitch
+    
+    sum = sum/frameSizeFreq;
+    coefficients(i) = sum;
+       
+    channelIndex = channelIndex + 1;
+    
     
 end
+
