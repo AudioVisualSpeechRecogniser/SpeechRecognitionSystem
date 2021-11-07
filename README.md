@@ -12,15 +12,13 @@ to Create a proto file for training, run the writeProtoFile.m script specifying 
 
 To initilise a model run the following command with HTK installed replacing <Labeled Name> with a name from the label file:
 
-`HInit -S lists/trainlist.txt -l <Labeled Name> -L labels/train -M hmms -o <Labeled Name> -T 1 lib/proto8States.txt`
+1.`HInit -S lists/trainlist.txt -l <Labeled Name> -L labels/train -M hmms -o <Labeled Name> -T 1 lib/proto8States.txt`
 
 Once all of the models have been initilised you will then need to create a NET file from your GRAM file using HParse:
 
-`HParse GRAM NET`
+2. `HParse GRAM NET` (cd lib before running)
 
 You can then test the model by running the following replacing <.mfc file> with your test .mfc file:
-
-`HVite -T 1 -d hmms/ -w lib/NET lib/dict lib/words MFCCs/test/<.mfc file>`
 
 To run a batch test run the following:
 
