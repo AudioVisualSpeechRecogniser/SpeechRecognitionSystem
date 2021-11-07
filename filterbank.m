@@ -1,28 +1,21 @@
-function [ coefficients ] = melScaleFilterbank( mag, numChannels )
+function [ fbank ] = filterbank(magnitude, numberOfChannels)
 
-%initialise array of size channels
-coefficients = zeros(numChannels,1);
+fbank = zeros(numberOfChannels,1); % new blank vector
+frameSize = round(length(magnitude)/numberOfChannels);
 
-%width of melbank filter rectangular frame
-frameSizeFreq =round( length(mag)/numChannels);
-channelIndex = 1;
-%Outer loop (between frames)
-for i=1 : numChannels
+channelCount = 1;
+for i=1 : numberOfChannels
     
+    %//TODO Check this
     sum = 0.0;
     
-    %Inner loop (averages magnitudes within the frames)
-    for j=1 : frameSizeFreq
-           
-           sum = sum + mag((i-1)*frameSizeFreq + j); 
-        
+    for j=1:frameSize
+           sum = sum + magnitude((i-1)*frameSize + j); % Average the values (sum)
     end
     
-    sum = sum/frameSizeFreq;
-    coefficients(i) = sum;
+    sum = sum/frameSize;
+    fbank(i) = sum;
        
-    channelIndex = channelIndex + 1;
-    
-    
+    channelCount = channelCount + 1;
 end
 

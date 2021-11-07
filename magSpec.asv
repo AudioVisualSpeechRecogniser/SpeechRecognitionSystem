@@ -1,0 +1,67 @@
+function [featureVectors] = magSpec(sample, fs, numberOfChannels)
+
+numberOfSamples = length(sample);
+
+frameSize = 0.02; %20ms Framerate
+overlap = 0.01;  %10ms 50% overlap
+
+overlapSamples = overlap * fs;
+frameSamples = frameSize * fs;   
+
+frames = floor(numberOfSamples/overlapSamples -1);
+featureVectors = zeros(frames,numberOfChannels/2); % New blank vector
+
+frameCount = 1;
+for i=1 : overlapSamples : length(sample) - frameSamples - 1
+    
+    start = i;
+    finish = i + frameSamples;
+    frame = sample(start:finish);
+    
+    %//TODO 
+    emphasisedFrame = filter([1,-0.97],1,frame);
+    frame = emphasisedFrame;
+    
+    %apply Hamming window
+    hammingWin = hamming(length(frame)) .* frame;
+    
+    %Take FFT to obtain complex spectrum
+    complexSpectrum = fft(hammingWin);
+    
+    %Convert to magnitude spectrum
+    mag = abs(complexSpectrum); 
+    mag = mag(1:floor(length(mag)/2));
+    
+    %Get mel filterbank coefficients
+    coefficients = filterbank(mag,numberOfChannels);
+    
+    %[filterMel,coefficients2] = melfilter(channelsNum,mag);
+    %coefficients3 = mag * filterMel;
+    
+    %allCoefficients(i,:) = coefficients;
+    coefficientsLog = log(coefficients);
+    
+    if(isnan(coefficientsLog) | isinf(coefficientsLog))
+        for j=1:length(coefficientsLog)
+            coefficientsLog(j) = 0;
+        end
+    end
+    
+    %dct to estimate quefrency
+    quefrencyFull = dct(coefficientsLog);
+    
+    %truncation (roughly half the size)
+    quefrencyTrun = quefrencyFull(1:length(quefrencyFull)/2);
+    
+    featureVectors(frameCount,:) = transpose(quefrencyTrun);
+    frameCount = frameCount + 1;
+   
+    
+    
+end
+
+
+
+
+end
+
