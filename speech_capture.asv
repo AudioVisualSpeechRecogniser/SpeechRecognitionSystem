@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 fs = 16000;
 r = audiorecorder(fs, 16, 1);
 disp("Start speaking");
@@ -25,10 +22,7 @@ audiowrite("speech" + fileNumber + ".wav", xNorm, 16000);
 pause(2);
 
 clear;
-=======
-=======
->>>>>>> master
->>>>>>> 0954923775bb1cb0ed8a79ccfd0c91f0e23091a8
+
 for fileNumber = 1:1
     fs = 16000;
     r = audiorecorder(fs, 16,1);
@@ -57,13 +51,6 @@ for fileNumber = 1:1
     pause(2);
 
     clear;
-<<<<<<< HEAD
+
 end
-=======
-<<<<<<< HEAD
-end
->>>>>>> 1cb5f522e43982268a1fe0701143ff2b2d5c0de8
-=======
-end
->>>>>>> master
->>>>>>> 0954923775bb1cb0ed8a79ccfd0c91f0e23091a8
+
