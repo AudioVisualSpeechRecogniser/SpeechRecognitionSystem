@@ -16,14 +16,34 @@ To initilise a model run the following command with HTK installed replacing <Lab
 
 Once all of the models have been initilised you will then need to create a NET file from your GRAM file using HParse:
 
-2. `HParse GRAM NET` (cd lib before running)
+2. `HParse GRAM.txt NET` (cd lib before running)
 
 You can then test the model by running the following replacing <.mfc file> with your test .mfc file:
 
 To run a batch test run the following:
 
-`HVite -T 1 -S lists/testList.txt -d hmms/ -w lib/NET -l results lib/dict lib/words`
+`HVite -T 1 -S lists/testList.txt -d hmms/ -w lib/NET -l results lib/dict.txt lib/words.txt`
 
 To view the results of the testing run the following:
 
-`HResults -p -e "???" sil -e "???" <sp> -L labels/test lib/words results/*.rec`
+`HResults -p -e "???" sil -L labels/test lib/words.txt results/*.rec`
+
+## Putty Configuration
+
+cmp-18stuspeech.uea.ac.uk
+
+##Network Drive Configuration
+
+\\cmp-18stuspeech.uea.ac.uk\storage
+
+## Demo Procidure:
+
+1. Record Audio using speech_capture function
+
+2. Create a .lab file for the audio
+
+3. Check main parameters are correct and run main function to generate .mfc
+
+4. Run the following command in Linux server: `HVite -T 1 -S lists/testList.txt -d hmms/ -w lib/NET -l results lib/dict.txt lib/words.txt`
+
+5. run the following command to get the results: `HResults -p -e "???" sil -L labels/test lib/words.txt results/*.rec`
