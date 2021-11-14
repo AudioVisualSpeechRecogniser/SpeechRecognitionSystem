@@ -1,16 +1,11 @@
+[x,fs] = audioread('ReversedSession2.wav');  % Reading the audio file 
 
-for i = 1:10
+y = resample(x,16000,fs); % Resampling it to 20KHz sampling frequency. 
 
-    [x,fs] = audioread("Data/test/Test-Reversed-" + i + ".wav");  % Reading the audio file 
+new_frequency_sampling = 16000; %Set sampling frequency variable to 20000
 
-    y = resample(x,16000,fs); % Resampling it to 20KHz sampling frequency. 
+singleChannel = y(:,1);
 
-    new_frequency_sampling = 16000; %Set sampling frequency variable to 20000
+% Changing Audio files to 16KHz
 
-    singleChannel = y(:,1);
-
-    % Changing Audio files to 16KHz
-
-    audiowrite("Data/test/Test-Reversed-" + i + ".wav", y,new_frequency_sampling);
-
-end
+audiowrite('ReversedSession2_16.wav', y,new_frequency_sampling);
