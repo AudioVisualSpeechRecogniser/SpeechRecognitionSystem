@@ -1,21 +1,17 @@
-function [ fbank ] = filterbank(magnitude, numberOfChannels)
+function [featureVector] = filterbank(magSpec, numberOfChannels)
 
-fbank = zeros(numberOfChannels,1); % new blank vector
-frameSize = round(length(magnitude)/numberOfChannels);
-
-channelCount = 1;
-for i=1 : numberOfChannels
-    
-    %//TODO Check this
-    sum = 0.0;
-    
-    for j=1:frameSize
-           sum = sum + magnitude((i-1)*frameSize + j); % Average the values (sum)
+    bins = floor(linspace(1, length(magSpec), numberOfChannels+1));
+    featureVector = zeros(numberOfChannels, 1);
+    for j=1:length(bins)-1
+        if j ~= length(bins)
+            first = bins(j);
+            last = bins(j+1);
+            featureVector(j) = sum(magSpec(first:last));
+        end
     end
-    
-    sum = sum/frameSize;
-    fbank(i) = sum;
-       
-    channelCount = channelCount + 1;
-end
 
+    featureVector = log(featureVector);
+    featureVector = dct(featureVector);
+    %featureVector = featureVector(1:floor(N/2))
+    
+end

@@ -1,28 +1,43 @@
-numberOfFiles = 1; % Number of files in the train/test folder
-fileNameStart = "SNR-Noise-36-"; % Beginning of the filename without the number e.g. "Take-" for "Take-1" et.c
-filterbankChannels = 40; % Number of filterbank channels to use
-testOrTrain = "test";
+function [] = main()
 
-fid = fopen("lists/" + testOrTrain + "List.txt", "w");
-
-for i=1:numberOfFiles
-    currentFile = fileNameStart + i;
-    numberOfChannels = filterbankChannels;
-
-    input = "Data\" + testOrTrain + "\" + currentFile + ".wav";
-
-    disp(input)
-
-    output = "MFCCs\" + testOrTrain + "\" + currentFile + ".mfc";
+    % Set the number of files to process
+    numberOfFiles = 10;
     
-    fprintf(fid, "MFCCs/" + testOrTrain + "/" + currentFile + ".mfc");
-
-    [sample,fs] = audioread(input);
-
-    %//TODO Check this - Noise compensation
-    %sample = specsub(sample,fs);
-
-    magnitude = magSpec(sample, fs, numberOfChannels); % audio data, frequency, output filename, number of channels
-
-    writeToFile(magnitude, output)
+    % Start in 'test' or 'train' mode
+    testOrTrain = "train";
+    
+    % The beginning of the filename without number e.g 'Take-' for 'Take-1'
+    fileName = "Take-";
+    
+    % Set the number of filterbank channels
+    numberOfChannels = 10;
+    
+    % Directories to read and save to
+    outputDirectory = "MFCCs/" + testOrTrain + "/";
+    dataLocation = "Data/" + testOrTrain + "/";
+    
+    % Open respective list
+    fid = fopen("lists/" + testOrTrain + "List.txt", "w");
+    
+    % Loop through the files to generate the file names to be processed
+    for i = 1 : numberOfFiles
+            fileNames(i, :) = fileName+i;
+    end
+    
+    % Process each file
+    for i = 1 : numberOfFiles
+        tic
+        
+        fprintf(fid, "MFCCs/" + testOrTrain + "/" + fileNames(i) + ".mfc");
+        
+        % Read in the audio data from the .wav files
+        [audioData, fs] = audioread(dataLocation + fileNames(i) + ".wav");
+        
+        % Generate a feature vector
+        featureVector = audio_process (audioData, fs, numberOfChannels);
+        
+        % Write the feature vector to the .mfc file
+        writeHTK(featureVector, fileNames(i), outputDirectory);
+        toc
+    end
 end
